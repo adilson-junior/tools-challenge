@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard.vo;
+package br.com.toolschalleng.vo;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,9 +9,7 @@ public class Transacao implements Serializable{
 	private Long id;
 	private String cartao; 
 	private Descricao descricao;
-	private FormaPagamento formaPagamento;	
-	
-	
+	private FormaPagamento formaPagamento;		
 	
 	
 	public Transacao() {

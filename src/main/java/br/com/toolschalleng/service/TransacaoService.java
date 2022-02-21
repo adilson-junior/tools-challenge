@@ -1,19 +1,19 @@
-package br.com.toolschalleng.pgcard.service;
+package br.com.toolschalleng.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.toolschalleng.pgcard.domain.Cartao;
-import br.com.toolschalleng.pgcard.domain.Pagamento;
-import br.com.toolschalleng.pgcard.enuns.FormaPagamentoUnum;
-import br.com.toolschalleng.pgcard.enuns.Status;
-import br.com.toolschalleng.pgcard.exception.NegocioException;
-import br.com.toolschalleng.pgcard.repository.CartaoPagamentoResository;
-import br.com.toolschalleng.pgcard.util.TransacaoUTIL;
-import br.com.toolschalleng.pgcard.vo.Transacao;
-import br.com.toolschalleng.pgcard.vo.TransacaoResponse;
+import br.com.toolschalleng.domain.Cartao;
+import br.com.toolschalleng.domain.Pagamento;
+import br.com.toolschalleng.enuns.FormaPagamentoUnum;
+import br.com.toolschalleng.enuns.Status;
+import br.com.toolschalleng.exception.NegocioException;
+import br.com.toolschalleng.repository.CartaoPagamentoResository;
+import br.com.toolschalleng.util.TransacaoUTIL;
+import br.com.toolschalleng.vo.Transacao;
+import br.com.toolschalleng.vo.TransacaoResponse;
 
 @Service
 public class TransacaoService extends AbstractService<CartaoPagamentoResository>{		

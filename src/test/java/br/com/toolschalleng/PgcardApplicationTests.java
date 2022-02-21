@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard;
+package br.com.toolschalleng;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

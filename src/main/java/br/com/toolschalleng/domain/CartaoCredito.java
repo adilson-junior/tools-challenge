@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard.domain;
+package br.com.toolschalleng.domain;
 
 import java.time.LocalDate;
 

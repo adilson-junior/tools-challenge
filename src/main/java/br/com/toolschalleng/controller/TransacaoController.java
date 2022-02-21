@@ -1,4 +1,5 @@
-package br.com.toolschalleng.pgcard.controller;
+package br.com.toolschalleng.controller;
+
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -10,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.toolschalleng.pgcard.exception.NegocioException;
-import br.com.toolschalleng.pgcard.service.TransacaoService;
-import br.com.toolschalleng.pgcard.vo.TransacaoRequest;
-import br.com.toolschalleng.pgcard.vo.TransacaoResponse;
+import br.com.toolschalleng.exception.NegocioException;
+import br.com.toolschalleng.service.TransacaoService;
+import br.com.toolschalleng.vo.TransacaoRequest;
+import br.com.toolschalleng.vo.TransacaoResponse;
 
 
 @RestController
-@RequestMapping("api/pagamento")
+@RequestMapping("api/pagamentos")
 public class TransacaoController extends AbstractController<TransacaoService> {
 	
 	@PostMapping()

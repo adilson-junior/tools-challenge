@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard.vo;
+package br.com.toolschalleng.vo;
 
 
 import java.io.Serializable;

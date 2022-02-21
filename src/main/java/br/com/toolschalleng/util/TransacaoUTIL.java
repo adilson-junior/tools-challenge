@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard.util;
+package br.com.toolschalleng.util;
 
 
 import java.util.Random;

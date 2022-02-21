@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard.controller;
+package br.com.toolschalleng.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;

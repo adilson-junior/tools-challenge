@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard.service;
+package br.com.toolschalleng.service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,14 +10,14 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.toolschalleng.pgcard.domain.Cartao;
-import br.com.toolschalleng.pgcard.domain.Pagamento;
-import br.com.toolschalleng.pgcard.enuns.FormaPagamentoUnum;
-import br.com.toolschalleng.pgcard.enuns.Status;
-import br.com.toolschalleng.pgcard.repository.CartaoPagamentoResository;
-import br.com.toolschalleng.pgcard.util.TransacaoUTIL;
-import br.com.toolschalleng.pgcard.vo.Transacao;
-import br.com.toolschalleng.pgcard.vo.TransacaoResponse;
+import br.com.toolschalleng.domain.Cartao;
+import br.com.toolschalleng.domain.Pagamento;
+import br.com.toolschalleng.enuns.FormaPagamentoUnum;
+import br.com.toolschalleng.enuns.Status;
+import br.com.toolschalleng.repository.CartaoPagamentoResository;
+import br.com.toolschalleng.util.TransacaoUTIL;
+import br.com.toolschalleng.vo.Transacao;
+import br.com.toolschalleng.vo.TransacaoResponse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -70,7 +70,6 @@ public class TransacaoServiceTest extends AbstractService<CartaoPagamentoResosit
 		Long id = 1l;
 		Pagamento pagamento = repository.buscarPagamentoId(id);
 		if(pagamento != null) {
-			//Prepara resposta
 			//Prepara resposta
 			Transacao transacao = new Transacao();
 			transacao.setId(pagamento.getId());

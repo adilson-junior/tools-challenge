@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard;
+package br.com.toolschalleng;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

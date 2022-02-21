@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard.service;
+package br.com.toolschalleng.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

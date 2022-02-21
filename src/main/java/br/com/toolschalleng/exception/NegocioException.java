@@ -1,6 +1,6 @@
-package br.com.toolschalleng.pgcard.exception;
+package br.com.toolschalleng.exception;
 
-import br.com.toolschalleng.pgcard.vo.TransacaoResponse;
+import br.com.toolschalleng.vo.TransacaoResponse;
 
 public class NegocioException extends RuntimeException{
 

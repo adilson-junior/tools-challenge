@@ -1,16 +1,16 @@
-package br.com.toolschalleng.pgcard.domain;
+package br.com.toolschalleng.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import br.com.toolschalleng.pgcard.enuns.FormaPagamentoUnum;
-import br.com.toolschalleng.pgcard.enuns.Status;
+import br.com.toolschalleng.enuns.FormaPagamentoUnum;
+import br.com.toolschalleng.enuns.Status;
 
 public class Pagamento implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	private Long id;
+	private Long id;	
 	private Float valor;	
 	private LocalDateTime dataPagamento;	
 	private String estabelecimento;	

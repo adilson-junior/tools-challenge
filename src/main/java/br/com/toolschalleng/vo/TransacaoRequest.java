@@ -1,8 +1,8 @@
-package br.com.toolschalleng.pgcard.vo;
+package br.com.toolschalleng.vo;
 
 import java.io.Serializable;
 
-public class TransacaoResponse implements Serializable{
+public class TransacaoRequest implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -14,6 +14,6 @@ public class TransacaoResponse implements Serializable{
 
 	public void setTransacao(Transacao transacao) {
 		this.transacao = transacao;
-	}	
+	}		
 
 }

@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard.repository;
+package br.com.toolschalleng.repository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.toolschalleng.pgcard.domain.Cartao;
-import br.com.toolschalleng.pgcard.domain.CartaoCredito;
-import br.com.toolschalleng.pgcard.domain.Pagamento;
+import br.com.toolschalleng.domain.Cartao;
+import br.com.toolschalleng.domain.CartaoCredito;
+import br.com.toolschalleng.domain.Pagamento;
 
 @Repository
 public class CartaoPagamentoResository {

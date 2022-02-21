@@ -1,4 +1,4 @@
-package br.com.toolschalleng.pgcard.enuns;
+package br.com.toolschalleng.enuns;
 
 public enum Status {
 		
