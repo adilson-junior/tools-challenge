@@ -1,79 +1,202 @@
-# ToolsChallenge pagamento-API
+# ToolsChallenge-API
 
-API de pagamento que realiza processamento de solicitaçoes de compra por boleto e cartão de crédito. 
-Para o processamento é necessário enviar os dados do cliente, comprador, forma de pagamento e o cartão de crédito quando a forma de pagamento é cartão de crédito.
-A API verifica se o cartão de crédito é válido, verifica se o cliente e o comprador já existe no sistema, caso já existam ela vincula os mesmos com o pagamento a ser processado. Quando a forma de pagamento é boleto a API gera um boleto e retorna o boleto gerado.
-A API permite consultar os dados do pagamento enviado para processamento.
+API que realiza transações de compra por cartão de crédito. 
 
-## Tecnologias Utilizadas
-O projeto foi criado com Spring Boot na linguagem de programação Java com BD MySQL, Spring Data JPA e realizado testes unitários com JUnit.
+Para cada tipo de processamento, é necessário enviar os dados da transação no formato JSON, o número do cartão de crédito, descrição da compra e forma de pagamento.
+
+A API verifica se o cartão de crédito já existe no sistema. Caso exista, ela verifica o saldo e, caso o saldo for positivo, realiza o pagamento a ser processado.
+
+A API permite consultar os dados do pagamento por ID e de todos processados.
+
+A API permite realizar o estorno da transação.
+
+# Tecnologias utilizadas
+- Java 11
+- Spring Boot
+- Maven
+- Testes unitários com JUnit.
 
 ## Arquitetura 
-O projeto está divido nas seguintes camadas:
-
 *main:*
-1. Entidade  
-2. Repositório
-3. Serviço
-4. Controle
-5. DTO
-6. Converte
-7. Exceção
+1. Domain  
+2. Repository
+3. Service
+4. Controller
+5. Enuns
+6. Util
+7. Exception
+8. VO
 
 *test:*
-1. Serviço
+1. Service
 
 ## Como executar
-1. Clonar o projeto
-2. Ter instalado o BD MySQL 
-3. Configurar no aplication.properties a conexão do BD
-4. Executar no terminal o comando: ``mvn spring-boot:run``
-5. Realizar o cadastro de um Cliente no BD
+Pré-requisitos: Java 11
+
+```bash
+# clonar repositório
+git clone https://github.com/adilson-junior/tools-challenge.git
+
+# entrar na pasta do projeto back end
+cd tools-challenge
+
+# executar o projeto
+./mvnw spring-boot:run
+```
 
 ## Como testar 
-O sistema possui dois endpoint: 
-1. **``POST api/v1/pagamentos``**: Requisita o processamento do pagamento que está enviando no corpo da solicitação.
-*Exemplo do corpo da requisição para Cartão de Crédito:*
-```javascript
+O sistema possui os endpoints: 
+<br>
+**``POST api/pagamentos``**: Envia um requisição para o processamento de pagamento.
+<br>
+*Exemplo do corpo da requisição para pagamento:*
+```bash
 {
-	"pagamento" :{
-		"valor": 233.52,
-		"forma" : "CARTAO_CREDITO",
-		"cartao":{
-			"name":"Ana Carla",
-			"numero": "379933881288935",
-			"dataValidade": "2020-06-27",
-			"cvv": "377"
-		}
-	},
-	"cliente":{
-		"idCliente":1
-	},
-	"comprador":{
-		"nome":"Amanda",
-		"email": "amanda.adsilva@gmail.com",
-		"cpf": "95099846041"
-	}
+    "transacao": {
+        "cartao": "5387444452528983",
+        "descricao": {
+            "valor": "100",
+            "dataHora": "01/05/2021 18:30:00",
+            "estabelecimento": "Pet 100%"            
+        },
+        "formaPagamento": {
+            "tipo": "AVISTA",
+            "parcelas": "1"
+        }
+    }
+}
+```
+*Exemplo do corpo da resposta para pagamento:*
+```bash
+{
+    "transacao": {
+        "id": 2,
+        "cartao": "************8983",
+        "descricao": {
+            "valor": 100.0,
+            "dataHora": "01/05/2021 18:30:00",
+            "estabelecimento": "Pet 100%",
+            "nsu": "2",
+            "codigoAutorizacao": "285486170",
+            "status": "AUTORIZADO"
+        },
+        "formaPagamento": {
+            "tipo": "AVISTA",
+            "parcelas": 1
+        }
+    }
+}
+```
+ **``PUT api/pagamentos/1``**: Envia uma requisição para o processamento de estorno por id informado na URL.
+ <br>
+*Exemplo do corpo da resposta para estorno por id:*
+```bash
+{
+    "transacao": {
+        "id": 1,
+        "cartao": "************8983",
+        "descricao": {
+            "valor": 100.0,
+            "dataHora": "01/05/2021 18:30:00",
+            "estabelecimento": "Pet 100%",
+            "nsu": "1",
+            "codigoAutorizacao": "324264430",
+            "status": "CANCELADO"
+        },
+        "formaPagamento": {
+            "tipo": "AVISTA",
+            "parcelas": 1
+        }
+    }
 }
 ```
 
-*Exemplo do corpo da requisição para Boleto:*
-```javascript
+**``GET api/pagamentos/2``**: Envia uma requisição de consulta de pagamento por id informado na URL.
+<br>
+*Exemplo do corpo da resposta para consulta por id:*
+```bash
 {
-	"pagamento" :{
-		"valor": 233.52,
-		"forma" : "BOLETO"
-	},
-	"cliente":{
-		"idCliente":1
-	},
-	"comprador":{
-		"nome":"Amanda",
-		"email": "amanda.adsilva@gmail.com",
-		"cpf": "95099846041"
-	}
+    "transacao": {
+        "id": 2,
+        "cartao": "************8983",
+        "descricao": {
+            "valor": 100.0,
+            "dataHora": "01/05/2021 18:30:00",
+            "estabelecimento": "Pet 100%",
+            "nsu": "2",
+            "codigoAutorizacao": "285486170",
+            "status": "AUTORIZADO"
+        },
+        "formaPagamento": {
+            "tipo": "AVISTA",
+            "parcelas": 1
+        }
+    }
 }
 ```
+**``GET api/pagamentos``**: Envia uma requisição de consulta de todos pagamentos.
+<br>
+*Exemplo do corpo da resposta para consulta de pagamentos
+```bash
+[
+    {
+        "transacao": {
+            "id": 1,
+            "cartao": "************8983",
+            "descricao": {
+                "valor": 100.0,
+                "dataHora": "01/05/2021 18:30:00",
+                "estabelecimento": "Pet 100%",
+                "nsu": "1",
+                "codigoAutorizacao": "324264430",
+                "status": "CANCELADO"
+            },
+            "formaPagamento": {
+                "tipo": "AVISTA",
+                "parcelas": 1
+            }
+        }
+    },
+    {
+        "transacao": {
+            "id": 2,
+            "cartao": "************8983",
+            "descricao": {
+                "valor": 100.0,
+                "dataHora": "01/05/2021 18:30:00",
+                "estabelecimento": "Pet 100%",
+                "nsu": "2",
+                "codigoAutorizacao": "285486170",
+                "status": "AUTORIZADO"
+            },
+            "formaPagamento": {
+                "tipo": "AVISTA",
+                "parcelas": 1
+            }
+        }
+    },
+    {
+        "transacao": {
+            "id": 3,
+            "cartao": "************8983",
+            "descricao": {
+                "valor": 100.0,
+                "dataHora": "01/05/2021 18:30:00",
+                "estabelecimento": "Pet 100%",
+                "nsu": "3",
+                "codigoAutorizacao": "377926503",
+                "status": "AUTORIZADO"
+            },
+            "formaPagamento": {
+                "tipo": "AVISTA",
+                "parcelas": 1
+            }
+        }
+    }
+]
+```
+# Desenvolvedor
 
-2. **``GET api/v1/pagamentos/{id}``**: Requisita os dados do pagamento do id informado na URL
+Adilson Junior - Desenvolvedor Java Pleno
 
+LinkedIn: https://www.linkedin.com/in/adilson-junior-a646a488/
