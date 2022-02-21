@@ -1,4 +1,4 @@
-# ToolsChallenge pagamento-API
+# ToolsChallenge-API
 
 API que realiza transações de compra por cartão de crédito. 
 Para cada tipo de processamento é necessário enviar os dados da transação no formato JSON, o número do cartão de crédito, descricao da compra e forma de pagamento.
