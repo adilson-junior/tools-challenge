@@ -1,6 +1,7 @@
 package br.com.toolschalleng.repository;
 
 import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,15 +11,19 @@ import br.com.toolschalleng.domain.Cartao;
 import br.com.toolschalleng.domain.CartaoCredito;
 import br.com.toolschalleng.domain.Pagamento;
 
+ /*
+ * Classe para simular o banco de dados.
+ */
+
 @Repository
 public class CartaoPagamentoResository {
-	//Cria as listas static para simular o banco.
+	
 	private static List<CartaoCredito> listaCartoes = new ArrayList<>();
 	private static Long idSequencialCartao = 1L;
 	
 	private static List<Pagamento>  listaPagamentos = new ArrayList<>();
 	private static Long idSequencialPagamento = 1L;
-	//Intância os cartões e add na lista.
+	
 	static {		
 		CartaoCredito cartao1 = new CartaoCredito("5387444452528983", "João da Silva", 5000f, 20, LocalDate.of(2029, 07, 22), "633", 5000f);
 		cartao1.setId(idSequencialCartao++);
@@ -84,6 +89,3 @@ public class CartaoPagamentoResository {
 	}	
 	
 }
-
-
-
