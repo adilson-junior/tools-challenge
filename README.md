@@ -1,9 +1,13 @@
 # ToolsChallenge-API
 
 API que realiza transações de compra por cartão de crédito. 
-Para cada tipo de processamento é necessário enviar os dados da transação no formato JSON, o número do cartão de crédito, descricao da compra e forma de pagamento.
-A API verifica se o cartão de crédito já existe no sistema, caso exista ela verifica o saldo e caso o saldo for positivo realiza o pagamento a ser processado.
+
+Para cada tipo de processamento, é necessário enviar os dados da transação no formato JSON, o número do cartão de crédito, descrição da compra e forma de pagamento.
+
+A API verifica se o cartão de crédito já existe no sistema. Caso exista, ela verifica o saldo e, caso o saldo for positivo, realiza o pagamento a ser processado.
+
 A API permite consultar os dados do pagamento por ID e de todos processados.
+
 A API permite realizar o estorno da transação.
 
 # Tecnologias utilizadas
@@ -42,6 +46,7 @@ cd tools-challenge
 
 ## Como testar 
 O sistema possui os endpoints: 
+<br>
 **``POST api/pagamentos``**: Envia um requisição para o processamento de pagamento.
 <br>
 *Exemplo do corpo da requisição para pagamento:*
