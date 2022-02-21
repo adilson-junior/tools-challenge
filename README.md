@@ -43,6 +43,7 @@ cd tools-challenge
 ## Como testar 
 O sistema possui os endpoints: 
 **``POST api/pagamentos``**: Envia um requisição para o processamento de pagamento.
+<br>
 *Exemplo do corpo da requisição para pagamento:*
 ```bash
 {
@@ -81,7 +82,8 @@ O sistema possui os endpoints:
     }
 }
 ```
- **``PUT api/pagamentos/1``**: Envia uma requisição para o processamento de estorno por id informado na URL
+ **``PUT api/pagamentos/1``**: Envia uma requisição para o processamento de estorno por id informado na URL.
+ <br>
 *Exemplo do corpo da resposta para estorno por id:*
 ```bash
 {
@@ -104,7 +106,8 @@ O sistema possui os endpoints:
 }
 ```
 
-**``GET api/pagamentos/2``**: Envia uma requisição de consulta de pagamento por id informado na URL
+**``GET api/pagamentos/2``**: Envia uma requisição de consulta de pagamento por id informado na URL.
+<br>
 *Exemplo do corpo da resposta para consulta por id:*
 ```bash
 {
@@ -126,7 +129,8 @@ O sistema possui os endpoints:
     }
 }
 ```
-**``GET api/pagamentos``**: Envia uma requisição de consulta de todos pagamentos
+**``GET api/pagamentos``**: Envia uma requisição de consulta de todos pagamentos.
+<br>
 *Exemplo do corpo da resposta para consulta de pagamentos
 ```bash
 [
